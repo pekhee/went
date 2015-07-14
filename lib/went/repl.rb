@@ -9,10 +9,14 @@ module Went
     end
 
     def run_line
-      output.print "WENT [#{line_number}] - > "
-      cmd = input.gets.chomp
+      catch :exit do
+        output.print "WENT [#{line_number}] - > "
+        cmd = input.gets.chomp
 
-      output.puts Parser.new(cmd).response
+        return output.puts Parser.new(cmd).response
+      end
+
+      output.puts "Exiting"
     end
 
     def run
