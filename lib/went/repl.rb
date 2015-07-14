@@ -16,7 +16,11 @@ module Went
     end
 
     def run
-      loop { run_line }
+      catch :exit do
+        loop { run_line }
+      end
+
+      output.puts "Exiting"
     end
 
     private

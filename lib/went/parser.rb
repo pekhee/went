@@ -25,6 +25,8 @@ module Went
         multiply
       when "/"
         divide
+      when "exit"
+        throw :exit
       else
         raise "IllegalInstruction"
       end
