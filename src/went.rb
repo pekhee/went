@@ -8,7 +8,8 @@ class Parser
   end
 
   def self.minus(arr)
-    sum = 0
+    arr.shift
+    sum = arr.shift.to_i
     for i in arr
      sum -= i.to_i
     end
