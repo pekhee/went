@@ -2,4 +2,8 @@
 
 require "./lib/went"
 
+trap("SIGINT") do
+  throw :exit
+end
+
 Went::Repl.new(STDIN, STDOUT).run
