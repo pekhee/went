@@ -1,22 +1,18 @@
 module Went
   class Parser
     def self.sum(arr)
-      sum = 0
-      for i in arr
-        sum += i.to_i
-      end
-
-      sum
+      arr = prepare(arr)
+      arr.reduce {|sum, e| sum + e}
     end
 
     def self.minus(arr)
-      arr.shift
-      sum = arr.shift.to_i
-      for i in arr
-       sum -= i.to_i
-      end
+      arr = prepare(arr)
+      arr.reduce {|sum, e| sum - e}
+    end
 
-      sum
+    def self.prepare(arr)
+      arr.shift
+      arr.map {|e| e.to_i}
     end
   end
 end
