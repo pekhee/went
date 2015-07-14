@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require "./src/went"
+require "./lib/went"
 
 Went::Repl.new(STDIN, STDOUT).run
