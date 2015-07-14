@@ -17,7 +17,7 @@ class Parser
 
 end
 
-class REPL
+class Repl
   def self.exec
     n = 0
     while true
@@ -34,5 +34,3 @@ class REPL
     end
   end
 end
-
-REPL.exec
