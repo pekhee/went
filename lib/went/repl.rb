@@ -11,13 +11,8 @@ module Went
     def run_line
       output.print "WENT [#{line_number}] - > "
       cmd = input.gets.chomp
-      if cmd.split(' ').include? "+"
-        output.puts Parser.sum cmd.split(' ')
-      elsif cmd.split(' ').include? "-"
-        output.puts Parser.minus cmd.split(' ')
-      else
-        output.puts ' "#{cmd}" is not a WENT command'
-      end
+
+      output.puts Parser.new(cmd).response
     end
 
     def run

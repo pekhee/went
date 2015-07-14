@@ -1,18 +1,54 @@
 module Went
   class Parser
-    def self.sum(arr)
-      arr = prepare(arr)
-      arr.reduce {|sum, e| sum + e}
+    attr_accessor :instruction, :command, :parsed_response
+
+    def initialize(command)
+      self.command = command.split(" ")
+
+      parse
     end
 
-    def self.minus(arr)
-      arr = prepare(arr)
-      arr.reduce {|sum, e| sum - e}
+    def response
+      parsed_response
     end
 
-    def self.prepare(arr)
-      arr.shift
-      arr.map {|e| e.to_i}
+    private
+    def parse
+      prepare
+
+      self.parsed_response = case instruction
+      when "+"
+        sum
+      when "-"
+        subtract
+      when "*"
+        multiply
+      when "/"
+        divide
+      else
+        raise "IllegalInstruction"
+      end
+    end
+
+    def sum
+      command.reduce {|sum, e| sum + e}
+    end
+
+    def subtract
+      command.reduce {|sum, e| sum - e}
+    end
+
+    def multiply
+      command.reduce {|sum, e| sum * e}
+    end
+
+    def divide
+      command.reduce {|sum, e| sum / e}
+    end
+
+    def prepare
+      self.instruction = command.shift
+      self.command = command.map {|e| e.to_i}
     end
   end
 end
